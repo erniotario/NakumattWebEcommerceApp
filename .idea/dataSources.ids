@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="MySQL" version="5.6.12-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="e7fb63a1-b37b-4ea3-a0fe-d757911124e8">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost:3306/nakumatts</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfcfdfd8dfc3dfc9</user-password>
+    <schema-pattern>nakumatts.*</schema-pattern>
+    <default-schemas>nakumatts.*</default-schemas>
+    <default-dialect>MySQL</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/mysql-connector-java-5.1.26-bin.jar!/</url>
+      </library>
+      <library>
+        <url>file://$PROJECT_DIR$/mysql-connector-license.txt</url>
+      </library>
+    </libraries>
+    <schema name="" catalog="nakumatts"/>
+    <table name="carts" schema="" catalog="nakumatts" type="TABLE">
+      <column name="cart_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="product_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="FLOAT" length="12" precision="0" nullable="false" jdbcType="7"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="cart_id"/>
+      <foreign-key name="fk_pruduct_id" columns="product_id" ref-table="products" ref-schema="" ref-catalog="nakumatts" ref-columns="Product_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="product_id_UNIQUE" unique="true" columns="product_id"/>
+      <index name="fk_pruduct_id_idx" unique="false" columns="product_id"/>
+    </table>
+    <table name="categories" schema="" catalog="nakumatts" type="TABLE">
+      <column name="CategoryId" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="CategoryId"/>
+      <exported-key name="fk_category" table="products" schema="" catalog="nakumatts" columns="categoryId"/>
+    </table>
+    <table name="creditcards" schema="" catalog="nakumatts" type="TABLE">
+      <column name="creditcard_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="type" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="bank" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="expiration_date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="creditcard_id"/>
+      <exported-key name="fk_creditcard" table="users" schema="" catalog="nakumatts" columns="creditcard"/>
+    </table>
+    <table name="offers" schema="" catalog="nakumatts" type="TABLE">
+      <column name="offer_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="product_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="offer_price" sqlType="FLOAT" length="12" precision="0" nullable="false" jdbcType="7"/>
+      <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="offer_sarting_date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="offer_ending_date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="offer_id"/>
+      <foreign-key name="fk_product_id" columns="product_id" ref-table="products" ref-schema="" ref-catalog="nakumatts" ref-columns="Product_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_product_id_idx" unique="false" columns="product_id"/>
+    </table>
+    <table name="orders" schema="" catalog="nakumatts" type="TABLE">
+      <column name="order_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="order_date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="shipping_amount" sqlType="FLOAT" length="12" precision="0" nullable="false" jdbcType="7"/>
+      <column name="product_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="order_amount" sqlType="FLOAT" length="12" precision="0" nullable="false" jdbcType="7"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="order_id"/>
+      <foreign-key name="fk_user" columns="user_id" ref-table="users" ref-schema="" ref-catalog="nakumatts" ref-columns="user_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="product_id" columns="product_id" ref-table="products" ref-schema="" ref-catalog="nakumatts" ref-columns="Product_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_order" table="shippinginfo" schema="" catalog="nakumatts" columns="order_id"/>
+      <index name="product_id_UNIQUE" unique="true" columns="product_id"/>
+      <index name="user_id_UNIQUE" unique="true" columns="user_id"/>
+      <index name="fk_user_idx" unique="false" columns="user_id"/>
+      <index name="product_id_idx" unique="false" columns="product_id"/>
+    </table>
+    <table name="products" schema="" catalog="nakumatts" type="TABLE">
+      <column name="Product_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="categoryId" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="image" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="Product_id"/>
+      <foreign-key name="fk_category" columns="categoryId" ref-table="categories" ref-schema="" ref-catalog="nakumatts" ref-columns="CategoryId" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_pruduct_id" table="carts" schema="" catalog="nakumatts" columns="product_id"/>
+      <exported-key name="fk_product_id" table="offers" schema="" catalog="nakumatts" columns="product_id"/>
+      <exported-key name="product_id" table="orders" schema="" catalog="nakumatts" columns="product_id"/>
+      <index name="categoryId_UNIQUE" unique="true" columns="categoryId"/>
+      <index name="fk_category_idx" unique="false" columns="categoryId"/>
+    </table>
+    <table name="shippinginfo" schema="" catalog="nakumatts" type="TABLE">
+      <column name="idShippingInfo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="ShipingClerkName" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="shipping_address" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="order_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="idShippingInfo"/>
+      <foreign-key name="fk_order" columns="order_id" ref-table="orders" ref-schema="" ref-catalog="nakumatts" ref-columns="order_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="order_id_UNIQUE" unique="true" columns="order_id"/>
+    </table>
+    <table name="users" schema="" catalog="nakumatts" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="fname" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="lname" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="dbo" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="genda" sqlType="CHAR" length="1" precision="0" nullable="false" jdbcType="1"/>
+      <column name="contactno" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="emailaddress" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="creditcard" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="role" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="active" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <foreign-key name="fk_creditcard" columns="creditcard" ref-table="creditcards" ref-schema="" ref-catalog="nakumatts" ref-columns="creditcard_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_user" table="orders" schema="" catalog="nakumatts" columns="user_id"/>
+      <index name="creditcard_UNIQUE" unique="true" columns="creditcard"/>
+      <index name="fk_creditcard_idx" unique="false" columns="creditcard"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 1:47:09 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Nakumatt.dao.Orders" table="orders" catalog="nakumatts">
+        <id name="orderId" type="java.lang.Integer">
+            <column name="order_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="shipper" class="Nakumatt.dao.Shipper" fetch="select">
+            <column name="shipper_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="carts" class="Nakumatt.dao.Carts" fetch="select">
+            <column name="cart_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="orderDate" type="date">
+            <column name="order_date" length="10" not-null="true" />
+        </property>
+        <property name="requeredDate" type="timestamp">
+            <column name="requered_date" length="19" not-null="true" />
+        </property>
+        <property name="shippingDate" type="timestamp">
+            <column name="shipping_date" length="19" not-null="true" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="quantity" not-null="true" />
+        </property>
+        <property name="orderAmount" type="float">
+            <column name="order_amount" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+        <set name="creditcardses" inverse="true">
+            <key>
+                <column name="order_id" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="Nakumatt.dao.Creditcards" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 1:47:09 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Nakumatt.dao.Offers" table="offers" catalog="nakumatts">
+        <id name="offerId" type="java.lang.Integer">
+            <column name="offer_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="products" class="Nakumatt.dao.Products" fetch="select">
+            <column name="product_id" not-null="true" />
+        </many-to-one>
+        <property name="offerPrice" type="float">
+            <column name="offer_price" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="offerSartingDate" type="date">
+            <column name="offer_sarting_date" length="10" not-null="true" />
+        </property>
+        <property name="offerEndingDate" type="date">
+            <column name="offer_ending_date" length="10" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

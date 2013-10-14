@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 1:47:09 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Nakumatt.dao.Creditcards" table="creditcards" catalog="nakumatts">
+        <id name="creditcardId" type="java.lang.Integer">
+            <column name="creditcard_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="orders" class="Nakumatt.dao.Orders" fetch="select">
+            <column name="order_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="type" type="string">
+            <column name="type" length="50" not-null="true" />
+        </property>
+        <property name="expirationDate" type="date">
+            <column name="expiration_date" length="10" not-null="true" />
+        </property>
+        <property name="cardSecurityCod" type="int">
+            <column name="card_security_cod" not-null="true" />
+        </property>
+        <property name="orderAmount" type="float">
+            <column name="order_amount" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 1:47:09 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Nakumatt.dao.Categories" table="categories" catalog="nakumatts">
+        <id name="categoryId" type="java.lang.Integer">
+            <column name="CategoryId" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+        <set name="productses" inverse="true">
+            <key>
+                <column name="categoryId" not-null="true" />
+            </key>
+            <one-to-many class="Nakumatt.dao.Products" />
+        </set>
+    </class>
+</hibernate-mapping>
