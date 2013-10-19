@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 10, 2013 1:47:09 AM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 16, 2013 2:10:05 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="Nakumatt.dao.Products" table="products" catalog="nakumatts">
         <id name="productId" type="java.lang.Integer">
@@ -14,8 +14,8 @@
         <property name="name" type="string">
             <column name="name" length="50" not-null="true" />
         </property>
-        <property name="price" type="string">
-            <column name="price" length="50" not-null="true" />
+        <property name="price" type="float">
+            <column name="price" precision="12" scale="0" not-null="true" />
         </property>
         <property name="description" type="string">
             <column name="description" length="65535" not-null="true" />

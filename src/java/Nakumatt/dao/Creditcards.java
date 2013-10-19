@@ -1,5 +1,5 @@
 package Nakumatt.dao;
-// Generated Oct 10, 2013 1:47:08 AM by Hibernate Tools 3.2.1.GA
+// Generated Oct 16, 2013 2:10:04 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;

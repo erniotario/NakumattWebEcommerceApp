@@ -1,5 +1,5 @@
 package Nakumatt.dao;
-// Generated Oct 10, 2013 1:47:08 AM by Hibernate Tools 3.2.1.GA
+// Generated Oct 16, 2013 2:10:04 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class Products  implements java.io.Serializable {
      private Integer productId;
      private Categories categories;
      private String name;
-     private String price;
+     private float price;
      private String description;
      private boolean active;
      private Set cartses = new HashSet(0);
@@ -24,14 +24,14 @@ public class Products  implements java.io.Serializable {
     }
 
 	
-    public Products(Categories categories, String name, String price, String description, boolean active) {
+    public Products(Categories categories, String name, float price, String description, boolean active) {
         this.categories = categories;
         this.name = name;
         this.price = price;
         this.description = description;
         this.active = active;
     }
-    public Products(Categories categories, String name, String price, String description, boolean active, Set cartses, Set offerses) {
+    public Products(Categories categories, String name, float price, String description, boolean active, Set cartses, Set offerses) {
        this.categories = categories;
        this.name = name;
        this.price = price;
@@ -62,11 +62,11 @@ public class Products  implements java.io.Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getPrice() {
+    public float getPrice() {
         return this.price;
     }
     
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
     public String getDescription() {

@@ -50,14 +50,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Products> findByCategory(int categoryId) {
         Categories cat = (Categories) session.get(Categories.class, categoryId);
         return session.createCriteria(Products.class).add(Restrictions.eq("categories", cat)).list();
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Products> findAll() {
         
         
